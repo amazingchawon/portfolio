@@ -1,0 +1,23 @@
+:root {
+  /* Gray scale */
+  --color-gray-900: oklch(0.18 0.02 260);
+  --color-gray-600: oklch(0.45 0.02 260);
+  --color-gray-200: oklch(0.88 0.01 260);
+  --color-gray-100: oklch(0.96 0.00586 260);
+
+  /* Accent */
+  --color-red-500: oklch(0.58 0.22 25);
+  --color-pink-100: oklch(0.96 0.02 3.81);
+}
+
+.dark {
+  /* Gray scale */
+  --color-gray-900: oklch(0.96 0.01 260);
+  --color-gray-600: oklch(0.7 0.01 260);
+  --color-gray-200: oklch(0.32 0.02 260);
+  --color-gray-100: oklch(0.1684 0 0);
+
+  /* Accent */
+  --color-red-500: oklch(0.57 0.2 19.25);
+  --color-pink-100: oklch(0.3492 0.0382 358.41);
+}

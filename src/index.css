@@ -1,1 +1,19 @@
+@import './styles/tokens.css';
+@import '@fontsource/pretendard';
+@import '@fontsource/inconsolata';
 @import 'tailwindcss';
+
+@theme {
+  --color-bg: var(--color-gray-100);
+  --color-text: var(--color-gray-900);
+  --color-muted: var(--color-gray-600);
+  --color-border: var(--color-gray-200);
+  --color-primary: var(--color-red-500);
+  --color-surface-accent: var(--color-pink-100);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+}
