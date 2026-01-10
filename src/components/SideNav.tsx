@@ -37,6 +37,7 @@ export default function SideNav({ sections, activeId, onNavigate }: Props) {
                 <li key={s.id}>
                   <a
                     href={`#${s.id}`}
+                    data-active={isActive ? 'true' : 'false'}
                     onClick={(e) => {
                       e.preventDefault()
                       onNavigate(s.id)
