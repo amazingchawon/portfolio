@@ -15,7 +15,7 @@ type Props = {
 
 export default function SideNav({ sections, activeId, onNavigate }: Props) {
   return (
-    <aside className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
+    <aside className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24 md:pt-16 md:pb-8">
       {/* top */}
       <div>
         <header className="space-y-3">
