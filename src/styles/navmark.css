@@ -1,0 +1,71 @@
+/* NavMark: — -> * (3 lines) */
+.navmark__stem,
+.navmark__d1,
+.navmark__d2 {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: butt;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+
+/* idle state: diagonals hidden */
+.navmark__d1,
+.navmark__d2 {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  opacity: 0;
+  transition:
+    stroke-dashoffset 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 200ms ease;
+}
+
+/* idle state: horizontal line rotated and shrunk */
+.navmark__stem {
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: scaleY(0.28) rotate(-90deg);
+}
+
+/* hover/active state: show diagonals and expand horizontal line */
+.group:hover .navmark__stem,
+[data-active='true'] .navmark__stem {
+  transform: scaleY(1) rotate(0deg);
+}
+
+.group:hover .navmark__d1,
+.group:hover .navmark__d2,
+[data-active='true'] .navmark__d1,
+[data-active='true'] .navmark__d2 {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .navmark__stem,
+  .navmark__d1,
+  .navmark__d2 {
+    transition: none !important;
+  }
+}
+
+.navtext {
+  transform: translateX(0);
+  opacity: 0.88;
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    opacity 260ms ease;
+  will-change: transform;
+}
+
+/* hover: move text right */
+.group:hover .navtext {
+  transform: translateX(6px);
+  opacity: 1;
+}
+
+/* active: reset position + keep solid */
+[data-active='true'] .navtext {
+  transform: translateX(0);
+  opacity: 1;
+}
