@@ -1,5 +1,5 @@
 // src/components/SideNav.tsx
-import type { SectionId } from '@/data/sections'
+import type { Section, SectionId } from '@/data/sections'
 import NavMark from '@/assets/icons/NavMark'
 import ExternalLinkIcon from '@/assets/icons/ExternalLinkIcon'
 
@@ -8,11 +8,12 @@ function cx(...classes: Array<string | false | undefined>) {
 }
 
 type Props = {
-  sections: { id: SectionId; label: string }[]
+  sections: Section[]
   activeId: SectionId
+  onNavigate: (id: SectionId) => void
 }
 
-export default function SideNav({ sections, activeId }: Props) {
+export default function SideNav({ sections, activeId, onNavigate }: Props) {
   return (
     <aside className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
       {/* top */}
@@ -28,7 +29,7 @@ export default function SideNav({ sections, activeId }: Props) {
         </header>
 
         <nav className="mt-14">
-          <ul className="space-y-6">
+          <ul className="space-y-4">
             {sections.map((s) => {
               const isActive = s.id === activeId
 
@@ -36,28 +37,21 @@ export default function SideNav({ sections, activeId }: Props) {
                 <li key={s.id}>
                   <a
                     href={`#${s.id}`}
-                    data-active={isActive ? 'true' : 'false'}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      onNavigate(s.id)
+                    }}
                     className={cx(
                       'group inline-flex items-center gap-3 text-sm transition-colors',
                       isActive ? 'text-primary' : 'text-muted hover:text-text',
                     )}
                     aria-current={isActive ? 'page' : undefined}
                   >
-                    {/* 아이콘 */}
                     <NavMark className="h-4 w-4" />
 
-                    {/* 텍스트 */}
                     <span className="navtext flex items-center gap-3">
-                      <span className="font-medium">{s.label}</span>
-                      <span className="text-muted">
-                        {s.label === '소개'
-                          ? 'About'
-                          : s.label === '기술'
-                            ? 'Skills'
-                            : s.label === '경험'
-                              ? 'Experience'
-                              : 'Projects'}
-                      </span>
+                      <span>{s.label.ko}</span>
+                      <span>{s.label.en}</span>
                     </span>
                   </a>
                 </li>

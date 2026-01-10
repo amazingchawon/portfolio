@@ -6,18 +6,23 @@ import About from '@/sections/About'
 import Skills from '@/sections/Skills'
 import Experience from '@/sections/Experience'
 import Projects from '@/sections/Projects'
+import { useMemo } from 'react'
 
 export default function App() {
-  const sectionIds = SECTIONS.map((s) => s.id)
-  const activeId = useActiveSection(sectionIds)
+  const sectionIds = useMemo(() => SECTIONS.map((s) => s.id), [])
+  const { activeId, scrollTo } = useActiveSection(sectionIds)
 
   return (
     <div className="min-h-dvh bg-bg text-text">
-      <div className="mx-auto w-full max-w-6xl px-6 lg:flex lg:gap-16">
-        <SideNav sections={SECTIONS} activeId={activeId} />
+      <div className="mx-auto w-full max-w-6xl px-6 lg:flex lg:gap-4">
+        <SideNav
+          sections={SECTIONS}
+          activeId={activeId}
+          onNavigate={scrollTo}
+        />
 
-        <main className="pt-16 lg:w-[60%] lg:py-24">
-          <section id="About" className="scroll-mt-24 pb-24">
+        <main className="pt-16 lg:w-[52%] lg:py-24">
+          <section id="about" className="scroll-mt-24 pb-24">
             <About />
           </section>
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { SectionId } from '@/data/sections'
 
 type Options = {
@@ -9,17 +9,33 @@ type Options = {
    */
   topMargin?: string
   bottomMargin?: string
+  offsetPx?: number
+  lockMs?: number
 }
 
 export function useActiveSection(sectionIds: SectionId[], options?: Options) {
-  const [activeId, setActiveId] = useState<SectionId>(sectionIds[0] ?? 'intro')
+  const [activeId, setActiveId] = useState<SectionId>(
+    (sectionIds[0] ?? 'about') as SectionId,
+  )
+
+  const offsetPx = options?.offsetPx ?? 16
+  const lockMs = options?.lockMs ?? 700
 
   const rootMargin = useMemo(() => {
-    const top = options?.topMargin ?? '-30%'
-    const bottom = options?.bottomMargin ?? '-60%'
-    // left/right는 0으로 둠
+    const top = options?.topMargin ?? '-15%'
+    const bottom = options?.bottomMargin ?? '-65%'
     return `${top} 0px ${bottom} 0px`
   }, [options?.topMargin, options?.bottomMargin])
+
+  const lockRef = useRef(false)
+  const lockTimerRef = useRef<number | null>(null)
+  const lock = () => {
+    lockRef.current = true
+    if (lockTimerRef.current) window.clearTimeout(lockTimerRef.current)
+    lockTimerRef.current = window.setTimeout(() => {
+      lockRef.current = false
+    }, lockMs)
+  }
 
   useEffect(() => {
     const els = sectionIds
@@ -28,32 +44,39 @@ export function useActiveSection(sectionIds: SectionId[], options?: Options) {
 
     if (els.length === 0) return
 
-    // 화면에 들어온 섹션 중 "가장 최근에 들어온 것"을 active로 삼는 단순 전략
-    const visible = new Set<string>()
-
     const io = new IntersectionObserver(
       (entries) => {
-        for (const e of entries) {
-          const id = (e.target as HTMLElement).id
-          if (e.isIntersecting) visible.add(id)
-          else visible.delete(id)
-        }
+        if (lockRef.current) return
 
-        // visible 중에서 DOM 순서 기준으로 마지막(가장 아래)을 active로
-        const last = [...visible]
-          .map((id) => document.getElementById(id))
-          .filter(Boolean)
-          .sort((a, b) => (a!.offsetTop ?? 0) - (b!.offsetTop ?? 0))
-          .at(-1)?.id as SectionId | undefined
+        const best = entries
+          .filter((e) => e.isIntersecting)
+          .sort(
+            (a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0),
+          )[0]
 
-        if (last) setActiveId(last)
+        if (best?.target?.id) setActiveId(best.target.id as SectionId)
       },
-      { root: null, rootMargin, threshold: 0.1 },
+      {
+        root: null,
+        rootMargin,
+        threshold: [0.2, 0.35, 0.5, 0.65],
+      },
     )
 
-    for (const el of els) io.observe(el)
+    els.forEach((el) => io.observe(el))
     return () => io.disconnect()
   }, [sectionIds, rootMargin])
 
-  return activeId
+  const scrollTo = (id: SectionId) => {
+    const el = document.getElementById(id)
+    if (!el) return
+
+    setActiveId(id)
+    lock()
+
+    const y = el.getBoundingClientRect().top + window.scrollY - offsetPx
+    window.scrollTo({ top: y, behavior: 'smooth' })
+  }
+
+  return { activeId, scrollTo }
 }
