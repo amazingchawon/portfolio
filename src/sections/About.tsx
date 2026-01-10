@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="space-y-4 font-light">
+    <div className="space-y-4 font-light">
       <h2 className="lg:hidden text-xl font-semibold text-text pb-4">소개</h2>
       <div className="text-muted space-y-2 font-light">
         <p>
@@ -49,6 +49,6 @@ export default function About() {
           </p>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

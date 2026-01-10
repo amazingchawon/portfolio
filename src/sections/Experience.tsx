@@ -94,7 +94,7 @@ const CERTIFICATES: RecordItem[] = [
 
 export default function Experiences() {
   return (
-    <section className="space-y-4">
+    <div className="space-y-4">
       <h2 className="lg:hidden text-xl font-semibold text-text pb-4">경험</h2>
 
       <div className="space-y-12">
@@ -125,7 +125,7 @@ export default function Experiences() {
 
       {/* Certificate */}
       <RecordSection title="Certificate" items={CERTIFICATES} />
-    </section>
+    </div>
   )
 }
 
@@ -137,7 +137,7 @@ function RecordSection({
   items: RecordItem[]
 }) {
   return (
-    <section className="space-y-4 mt-16">
+    <div className="space-y-4 mt-16">
       <h3 className="text-md font-medium text-text">{title}</h3>
 
       <div className="space-y-6">
@@ -152,6 +152,6 @@ function RecordSection({
           </div>
         ))}
       </div>
-    </section>
+    </div>
   )
 }

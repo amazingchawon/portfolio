@@ -1,6 +1,6 @@
 export default function Skills() {
   return (
-    <section className="space-y-4">
+    <div className="space-y-4">
       <h2 className="lg:hidden text-xl font-semibold text-text pb-4">기술</h2>
 
       <div className="grid grid-cols-2 gap-8 md:grid-cols-4 font-light">
@@ -49,6 +49,6 @@ export default function Skills() {
           </ul>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

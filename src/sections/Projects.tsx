@@ -60,7 +60,7 @@ const PROJECTS: Project[] = [
 
 export default function Projects() {
   return (
-    <section className="space-y-4">
+    <div className="space-y-4">
       <h2 className="lg:hidden text-xl font-semibold text-text pb-4">
         프로젝트
       </h2>
@@ -120,6 +120,6 @@ export default function Projects() {
           </article>
         ))}
       </div>
-    </section>
+    </div>
   )
 }

@@ -18,7 +18,7 @@ export function useActiveSection(sectionIds: SectionId[], options?: Options) {
     (sectionIds[0] ?? 'about') as SectionId,
   )
 
-  const offsetPx = options?.offsetPx ?? 16
+  const offsetPx = options?.offsetPx ?? 96
   const lockMs = options?.lockMs ?? 700
 
   const rootMargin = useMemo(() => {
@@ -74,7 +74,13 @@ export function useActiveSection(sectionIds: SectionId[], options?: Options) {
     setActiveId(id)
     lock()
 
-    const y = el.getBoundingClientRect().top + window.scrollY - offsetPx
+    const scrollMarginTop = Number.parseFloat(
+      window.getComputedStyle(el).scrollMarginTop || '0',
+    )
+
+    const effectiveOffset = scrollMarginTop || offsetPx
+
+    const y = el.getBoundingClientRect().top + window.scrollY - effectiveOffset
     window.scrollTo({ top: y, behavior: 'smooth' })
   }
 
