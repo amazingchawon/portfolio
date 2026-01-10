@@ -58,10 +58,6 @@ const PROJECTS: Project[] = [
   },
 ]
 
-function cx(...classes: Array<string | false | undefined>) {
-  return classes.filter(Boolean).join(' ')
-}
-
 export default function Projects() {
   return (
     <section className="space-y-4">
