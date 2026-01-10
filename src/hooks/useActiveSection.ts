@@ -22,8 +22,8 @@ export function useActiveSection(sectionIds: SectionId[], options?: Options) {
   const lockMs = options?.lockMs ?? 700
 
   const rootMargin = useMemo(() => {
-    const top = options?.topMargin ?? '-15%'
-    const bottom = options?.bottomMargin ?? '-65%'
+    const top = options?.topMargin ?? '-20%'
+    const bottom = options?.bottomMargin ?? '-40%'
     return `${top} 0px ${bottom} 0px`
   }, [options?.topMargin, options?.bottomMargin])
 
