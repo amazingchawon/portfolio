@@ -19,6 +19,8 @@ type Project = {
   tags: string[]
 }
 
+const STORAGE_KEY = 'scroll:home'
+
 const PROJECTS: Project[] = [
   {
     slug: 'buliya',
@@ -79,14 +81,17 @@ export default function Projects() {
           return (
             <li
               key={p.title}
-              className="interactive-list-item group relative md:grid md:grid-cols-8 md:gap-10"
+              className="interactive-list-item group relative md:grid md:grid-cols-8 md:gap-8"
             >
               {/* 카드 전체 클릭 오버레이 */}
               <Link
                 to={`/projects/${p.slug}`}
-                aria-label={`${p.title} 프로젝트 상세 보기`}
                 className="absolute inset-0 z-20"
-              ></Link>
+                onClick={() => {
+                  sessionStorage.setItem(STORAGE_KEY, String(window.scrollY))
+                }}
+                aria-label={`${p.title} 프로젝트 상세 보기`}
+              />
 
               {/* background layer (hover 시 등장) */}
               <div

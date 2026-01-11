@@ -25,18 +25,18 @@
 
 .dark {
   /* Gray scale */
-  --color-gray-900: oklch(0.96 0.01 260);
-  --color-gray-600: oklch(0.7 0.01 260);
-  --color-gray-200: oklch(0.32 0.02 260);
-  --color-gray-100: oklch(0.1684 0 0);
+  --color-gray-900: oklch(0.93 0.008 248);
+  --color-gray-600: oklch(0.78 0.01 248);
+  --color-gray-200: oklch(0.34 0.012 248);
+  --color-gray-100: oklch(15.802% 0.01062 294.29);
 
   /* Accent */
-  --color-red-500: oklch(0.57 0.2 19.25);
-  --color-pink-100: oklch(0.3492 0.0382 358.41);
+  --color-red-500: oklch(59.96% 0.17729 10.263);
+  --color-pink-100: oklch(26.825% 0.02643 340.197);
 
   --spotlight-color: color-mix(
     in oklch,
-    var(--color-pink-100) 30%,
+    var(--color-pink-100) 40%,
     transparent
   );
 }

@@ -7,14 +7,35 @@ import About from '@/sections/About'
 import Skills from '@/sections/Skills'
 import Experience from '@/sections/Experience'
 import Projects from '@/sections/Projects'
-import { useMemo } from 'react'
+
+import ThemeToggle from '@/components/ThemeToggle'
+
+import { useLayoutEffect, useMemo } from 'react'
+
+const STORAGE_KEY = 'scroll:home'
 
 export default function HomePage() {
   const sectionIds = useMemo(() => SECTIONS.map((s) => s.id), [])
   const { activeId, scrollTo } = useActiveSection(sectionIds)
 
+  useLayoutEffect(() => {
+    const saved = sessionStorage.getItem(STORAGE_KEY)
+    if (!saved) return
+
+    const y = Number(saved)
+    if (!Number.isFinite(y)) return
+
+    // DOM 레이아웃이 잡힌 다음 프레임에 복원 (클램프 방지)
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: y, left: 0, behavior: 'auto' })
+    })
+  }, [])
+
   return (
     <PageShell>
+      <div className="fixed right-8 top-8 z-50">
+        <ThemeToggle />
+      </div>
       <div className="mx-auto w-full max-w-7xl px-6 lg:flex lg:gap-4">
         <SideNav
           sections={SECTIONS}
