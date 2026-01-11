@@ -10,19 +10,19 @@ github: https://github.com/amazingchawon/Ballog
 
 ## Key Screens
 
-![화면 1](/src/assets/projects/ballog/ballog-1.png)
+![화면 1](/projects/ballog/ballog-1.png)
 
-![화면 2](/src/assets/projects/ballog/ballog-2.png)
+![화면 2](/projects/ballog/ballog-2.png)
 
-![화면 3](/src/assets/projects/ballog/ballog-3.png)
+![화면 3](/projects/ballog/ballog-3.png)
 
-![화면 4](/src/assets/projects/ballog/ballog-4.png)
+![화면 4](/projects/ballog/ballog-4.png)
 
-![화면 5](/src/assets/projects/ballog/ballog-5.png)
+![화면 5](/projects/ballog/ballog-5.png)
 
-![화면 6](/src/assets/projects/ballog/ballog-6.png)
+![화면 6](/projects/ballog/ballog-6.png)
 
-![화면 7](/src/assets/projects/ballog/ballog-7.png)
+![화면 7](/projects/ballog/ballog-7.png)
 
 ## Overview
 
