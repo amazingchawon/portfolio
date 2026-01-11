@@ -10,9 +10,9 @@ github: https://github.com/amazingchawon/Devoot
 
 ## Key Screens
 
-![화면 1](/src/assets/projects/devoot/devoot-1.png)
+![화면 1](/projects/devoot/devoot-1.png)
 
-![화면 2](/src/assets/projects/devoot/devoot-2.png)
+![화면 2](/projects/devoot/devoot-2.png)
 
 ## Overview
 

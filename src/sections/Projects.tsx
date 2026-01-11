@@ -3,10 +3,10 @@ import Tag from '@/components/Tag'
 import { Link } from 'react-router-dom'
 
 // 이미지 import
-import buliya from '@/assets/projects/buliya/buliya.png'
-import ballogImg from '@/assets/projects/ballog/ballog.png'
-import devbadakImg from '@/assets/projects/devoot/devoot.png'
-import cineSeedImg from '@/assets/projects/cineseed/cineseed.png'
+import buliya from '/projects/buliya/buliya.png'
+import ballogImg from '/projects/ballog/ballog.png'
+import devbadakImg from '/projects/devoot/devoot.png'
+import cineSeedImg from '/projects/cineseed/cineseed.png'
 
 type Project = {
   slug: string
