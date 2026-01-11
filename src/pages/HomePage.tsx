@@ -7,6 +7,9 @@ import About from '@/sections/About'
 import Skills from '@/sections/Skills'
 import Experience from '@/sections/Experience'
 import Projects from '@/sections/Projects'
+
+import ThemeToggle from '@/components/ThemeToggle'
+
 import { useLayoutEffect, useMemo } from 'react'
 
 const STORAGE_KEY = 'scroll:home'
@@ -30,6 +33,9 @@ export default function HomePage() {
 
   return (
     <PageShell>
+      <div className="fixed right-8 top-8 z-50">
+        <ThemeToggle />
+      </div>
       <div className="mx-auto w-full max-w-7xl px-6 lg:flex lg:gap-4">
         <SideNav
           sections={SECTIONS}

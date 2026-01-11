@@ -20,6 +20,7 @@ export default function SideNav({ sections, activeId, onNavigate }: Props) {
       <div>
         <header className="space-y-3">
           <h1 className="text-5xl font-bold text-text">Nahyun Kim</h1>
+
           <p className="text-xl font-medium text-text">Frontend Developer</p>
           <p className="max-w-[36ch] text-muted">
             보기 좋은 화면을 넘어,
