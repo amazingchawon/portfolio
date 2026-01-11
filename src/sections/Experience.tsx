@@ -63,7 +63,7 @@ const AWARDS: RecordItem[] = [
     period: '2025.05',
     title: (
       <>
-        삼성 청년 SW AI 아카데미 프로젝트 [블로그]{' '}
+        삼성 청년 SW AI 아카데미 프로젝트 [볼로그]{' '}
         <span className="text-primary font-medium">우수상</span>
       </>
     ),
