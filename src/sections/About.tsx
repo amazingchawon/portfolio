@@ -1,11 +1,12 @@
 export default function About() {
   return (
-    <section className="space-y-4 font-light">
-      <h2 className="lg:hidden text-xl font-semibold text-text pb-4">소개</h2>
-      <div className="text-muted space-y-2 font-light">
+    <div className="space-y-4 font-light">
+      <h2 className="pb-4 text-xl font-semibold text-text lg:hidden">소개</h2>
+
+      <div className="space-y-2 font-light text-muted">
         <p>
-          <span className="text-primary font-normal">디자인의 감각</span>에
-          <span className="text-primary font-normal"> 개발의 논리</span>를 더해,
+          <span className="font-normal text-primary">디자인의 감각</span>에
+          <span className="font-normal text-primary"> 개발의 논리</span>를 더해,
           사용자 경험을 구현합니다.
         </p>
 
@@ -17,38 +18,46 @@ export default function About() {
         </p>
       </div>
 
-      <div className="mt-10">
-        <div className="flex flex-col py-6 lg:flex-row lg:items-start group">
-          <h3 className="w-full text-md font-medium text-text lg:w-1/3 group-hover:text-primary transition-colors">
-            Systematic Thinking
+      {/* list focus + hover highlight */}
+      <ul className="interactive-list mt-10 space-y-12">
+        <li className="interactive-list-item group flex flex-col lg:grid lg:grid-cols-8 lg:items-start">
+          {/* background layer */}
+          <div aria-hidden className="interactive-list-item-bg" />
+
+          <h3 className="relative z-10 w-full text-md font-medium text-text transition-colors duration-200 lg:col-span-2 group-hover:text-primary">
+            Systematic Thinker
           </h3>
-          <p className="mt-2 w-full leading-relaxed text-muted lg:mt-0 lg:w-2/3">
+          <p className="relative z-10 mt-2 w-full leading-relaxed text-muted lg:mt-0 lg:col-span-6">
             디자인 시스템을 코드로 추상화해 재사용 가능한 컴포넌트 구조를
             설계합니다. 확장성과 유지보수를 고려한 책임 분리를 중요하게
             생각합니다.
           </p>
-        </div>
+        </li>
 
-        <div className="flex flex-col py-6 lg:flex-row lg:items-start group">
-          <h3 className="w-full text-md font-medium text-text lg:w-1/3 group-hover:text-primary transition-colors">
-            Attention to Detail
+        <li className="interactive-list-item group flex flex-col lg:grid lg:grid-cols-8 lg:items-start">
+          <div aria-hidden className="interactive-list-item-bg" />
+
+          <h3 className="relative z-10 w-full text-md font-medium text-text transition-colors duration-200 lg:col-span-2 group-hover:text-primary">
+            Detail-Oriented
           </h3>
-          <p className="mt-2 w-full leading-relaxed text-muted lg:mt-0 lg:w-2/3">
+          <p className="relative z-10 mt-2 w-full leading-relaxed text-muted lg:mt-0 lg:col-span-6">
             사용자 흐름을 기준으로 UI를 설계하고, 반응형과 접근성을 고려해
             디자인 의도를 현실적인 구현으로 옮깁니다.
           </p>
-        </div>
+        </li>
 
-        <div className="flex flex-col py-6 lg:flex-row lg:items-start group">
-          <h3 className="w-full text-md font-medium text-text lg:w-1/3 group-hover:text-primary transition-colors">
-            Bridge Communication
+        <li className="interactive-list-item group flex flex-col lg:grid lg:grid-cols-8 lg:items-start">
+          <div aria-hidden className="interactive-list-item-bg" />
+
+          <h3 className="relative z-10 w-full text-md font-medium text-text transition-colors duration-200 lg:col-span-2 group-hover:text-primary">
+            Multidisciplinary Communicator
           </h3>
-          <p className="mt-2 w-full leading-relaxed text-muted lg:mt-0 lg:w-2/3">
+          <p className="relative z-10 mt-2 w-full leading-relaxed text-muted lg:mt-0 lg:col-span-6">
             디자이너와 개발자의 관점을 모두 이해하며, 추상적인 의도를 구현
             가능한 구조로 정리합니다.
           </p>
-        </div>
-      </div>
-    </section>
+        </li>
+      </ul>
+    </div>
   )
 }

@@ -33,7 +33,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative min-h-dvh bg-bg text-text">
+    <div className="relative min-h-dvh bg-bg text-text cursor-default">
       {/* spotlight overlay (클릭/스크롤 방해 X) */}
       <div
         className="pointer-events-none fixed inset-0 z-10"
