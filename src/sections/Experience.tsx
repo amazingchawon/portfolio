@@ -94,20 +94,22 @@ const CERTIFICATES: RecordItem[] = [
 
 export default function Experiences() {
   return (
-    <div className="space-y-4">
+    <div className=" space-y-6">
       <h2 className="lg:hidden text-xl font-semibold text-text pb-4">경험</h2>
 
-      <div className="space-y-12">
+      <ul className="interactive-list space-y-12">
         {EXPERIENCES.map((exp) => (
-          <div
+          <li
             key={`${exp.period}-${exp.title}`}
-            className="md:grid md:grid-cols-8"
+            className="interactive-list-item md:grid md:grid-cols-8"
           >
-            <p className="text-sm font-mono text-muted md:col-span-2 md:mt-1 md:self-start">
+            <div aria-hidden className="interactive-list-item-bg" />
+
+            <p className="relative z-10 text-sm font-mono text-muted md:col-span-2 md:mt-1 md:self-start">
               {exp.period}
             </p>
 
-            <div className="mt-3 md:mt-0 md:col-span-6">
+            <div className="relative z-10 mt-3 md:mt-0 md:col-span-6">
               <h3 className="text-md font-medium text-text">{exp.title}</h3>
 
               {exp.description.length > 0 && (
@@ -116,9 +118,9 @@ export default function Experiences() {
                 </div>
               )}
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {/* Awards */}
       <RecordSection title="Awards" items={AWARDS} />

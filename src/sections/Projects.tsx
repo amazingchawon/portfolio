@@ -60,15 +60,36 @@ const PROJECTS: Project[] = [
 
 export default function Projects() {
   return (
-    <div className="space-y-4">
-      <h2 className="lg:hidden text-xl font-semibold text-text pb-4">
+    <section className="space-y-4" aria-labelledby="projects-title">
+      <h2
+        id="projects-title"
+        className="pb-4 text-xl font-semibold text-text lg:hidden"
+      >
         프로젝트
       </h2>
 
-      <div className="space-y-12">
+      {/* list scope: hover 시 흐림/강조 */}
+      <ul className="interactive-list space-y-12">
         {PROJECTS.map((p) => (
-          <article key={p.title} className="md:grid md:grid-cols-8 md:gap-10">
-            <div className="md:col-span-2">
+          <li
+            key={p.title}
+            className="interactive-list-item group md:grid md:grid-cols-8 md:gap-10 cursor-pointer"
+          >
+            {p.href ? (
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${p.title} 프로젝트 열기`}
+                className="absolute inset-0 z-10"
+              />
+            ) : null}
+
+            {/* background layer (hover 시 등장) */}
+            <div aria-hidden className="interactive-list-item-bg" />
+
+            {/* content layer */}
+            <div className="relative z-10 md:col-span-2">
               <img
                 src={p.imageSrc}
                 alt={p.imageAlt}
@@ -77,49 +98,43 @@ export default function Projects() {
               />
             </div>
 
-            <div className="mt-4 md:mt-0 md:col-span-6">
+            <article className="relative z-10 mt-4 md:col-span-6 md:mt-0">
               {/* title + external link */}
-              <div className="group flex gap-1">
-                <h3 className="text-lg font-semibold text-text cursor-pointer">
+              <div className="flex items-center gap-1">
+                <h3 className="text-lg font-semibold text-text group-hover:text-primary">
                   {p.title}
                 </h3>
 
-                {p.href ? (
-                  <a
-                    className="inline-flex items-center gap-1 text-sm text-muted hover:text-text"
-                    href={p.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${p.title} 링크 열기`}
-                  >
-                    <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </a>
-                ) : null}
+                <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
               </div>
 
               {/* description */}
-              <div className="mt-3 space-y-2 text-muted font-light text-base/7">
+              <p className="mt-3 text-base/7 font-light text-muted">
                 {p.description}
-              </div>
+              </p>
 
               {/* award */}
               {p.award ? (
-                <p className="mt-3 text-sm text-text cursor-default">
-                  <span className="mr-1">🏅</span>
-                  <span className="text-primary font-medium">{p.award}</span>
+                <p className="mt-3 text-sm text-text">
+                  <span className="mr-1" aria-hidden>
+                    🏅
+                  </span>
+                  <span className="font-medium text-primary">{p.award}</span>
                 </p>
               ) : null}
 
               {/* tags */}
-              <div className="mt-4 flex flex-wrap gap-2">
+              <ul className="mt-4 flex flex-wrap gap-2">
                 {p.tags.map((t) => (
-                  <Tag key={t}>{t}</Tag>
+                  <li key={t}>
+                    <Tag>{t}</Tag>
+                  </li>
                 ))}
-              </div>
-            </div>
-          </article>
+              </ul>
+            </article>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   )
 }

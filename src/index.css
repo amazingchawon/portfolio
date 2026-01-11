@@ -1,5 +1,7 @@
 @import './styles/tokens.css';
 @import './styles/navmark.css';
+@import './styles/components.css';
+
 @import '@fontsource/pretendard/100.css';
 @import '@fontsource/pretendard/200.css';
 @import '@fontsource/pretendard/300.css';
