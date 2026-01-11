@@ -1,13 +1,15 @@
 import ExternalLinkIcon from '@/assets/icons/ExternalLinkIcon'
 import Tag from '@/components/Tag'
+import { Link } from 'react-router-dom'
 
 // 이미지 import
-import buliya from '@/assets/projects/buliya.png'
-import ballogImg from '@/assets/projects/ballog.png'
-import devbadakImg from '@/assets/projects/devoot.png'
-import cineSeedImg from '@/assets/projects/cineseed.png'
+import buliya from '@/assets/projects/buliya/buliya.png'
+import ballogImg from '@/assets/projects/ballog/ballog.png'
+import devbadakImg from '@/assets/projects/devoot/devoot.png'
+import cineSeedImg from '@/assets/projects/cineseed/cineseed.png'
 
 type Project = {
+  slug: string
   title: string
   description: string
   imageSrc: string
@@ -19,6 +21,7 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    slug: 'buliya',
     title: '불이야',
     href: 'https://github.com/amazingchawon/subway-fire-escape',
     imageSrc: buliya,
@@ -29,6 +32,7 @@ const PROJECTS: Project[] = [
     tags: ['React', 'Tailwind CSS', 'JavaScript', 'MapBox'],
   },
   {
+    slug: 'ballog',
     title: '볼로그',
     href: 'https://github.com/amazingchawon/Ballog',
     imageSrc: ballogImg,
@@ -39,6 +43,7 @@ const PROJECTS: Project[] = [
     tags: ['Kotlin', 'Samsung Health SDK'],
   },
   {
+    slug: 'devoot',
     title: '개발바닥',
     href: 'https://github.com/amazingchawon/Devoot',
     imageSrc: devbadakImg,
@@ -48,6 +53,7 @@ const PROJECTS: Project[] = [
     tags: ['Vue.js', 'Tailwind CSS', 'Firebase OAuth', 'Pinia'],
   },
   {
+    slug: 'cineseed',
     title: '시네시드',
     href: 'https://github.com/wooya0123/CineSeed',
     imageSrc: cineSeedImg,
@@ -70,23 +76,17 @@ export default function Projects() {
 
       <ul className="interactive-list space-y-12">
         {PROJECTS.map((p) => {
-          const isLink = Boolean(p.href)
-
           return (
             <li
               key={p.title}
               className="interactive-list-item group relative md:grid md:grid-cols-8 md:gap-10"
             >
               {/* 카드 전체 클릭 오버레이 */}
-              {isLink ? (
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${p.title} 프로젝트 열기`}
-                  className="absolute inset-0 z-20"
-                />
-              ) : null}
+              <Link
+                to={`/projects/${p.slug}`}
+                aria-label={`${p.title} 프로젝트 상세 보기`}
+                className="absolute inset-0 z-20"
+              ></Link>
 
               {/* background layer (hover 시 등장) */}
               <div
@@ -111,9 +111,7 @@ export default function Projects() {
                     {p.title}
                   </h3>
 
-                  {isLink ? (
-                    <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
-                  ) : null}
+                  <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
                 </div>
 
                 {/* description */}

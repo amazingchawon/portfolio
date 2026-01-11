@@ -20,7 +20,7 @@ export default function SideNav({ sections, activeId, onNavigate }: Props) {
       <div>
         <header className="space-y-3">
           <h1 className="text-5xl font-bold text-text">Nahyun Kim</h1>
-          <p className="text-xl font-medium text-text">Front End Developer</p>
+          <p className="text-xl font-medium text-text">Frontend Developer</p>
           <p className="max-w-[36ch] text-muted">
             보기 좋은 화면을 넘어,
             <br />
@@ -71,15 +71,6 @@ export default function SideNav({ sections, activeId, onNavigate }: Props) {
           rel="noreferrer"
         >
           github
-          <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </a>
-        <a
-          className="group inline-flex items-center gap-1 text-sm text-muted hover:text-text"
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-        >
-          resume
           <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </a>
         <a
