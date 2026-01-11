@@ -5,7 +5,6 @@ import { getProjectBySlug } from '@/lib/projectContent'
 
 import ArrowBackIcon from '@/assets/icons/ArrowBackIcon'
 import ExternalLinkIcon from '@/assets/icons/ExternalLinkIcon'
-import Tag from '@/components/Tag'
 
 function cx(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(' ')
