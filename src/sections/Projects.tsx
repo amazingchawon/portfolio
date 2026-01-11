@@ -20,7 +20,7 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     title: '불이야',
-    href: '#',
+    href: 'https://github.com/amazingchawon/subway-fire-escape',
     imageSrc: buliya,
     imageAlt: '불이야 프로젝트 화면',
     description:
@@ -30,7 +30,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: '볼로그',
-    href: '#',
+    href: 'https://github.com/amazingchawon/Ballog',
     imageSrc: ballogImg,
     imageAlt: '볼로그 프로젝트 화면',
     description:
@@ -40,7 +40,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: '개발바닥',
-    href: '#',
+    href: 'https://github.com/amazingchawon/Devoot',
     imageSrc: devbadakImg,
     imageAlt: '개발바닥 프로젝트 화면',
     description:
@@ -49,7 +49,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: '시네시드',
-    href: '#',
+    href: 'https://github.com/wooya0123/CineSeed',
     imageSrc: cineSeedImg,
     imageAlt: '시네시드 프로젝트 화면',
     description:
@@ -68,72 +68,81 @@ export default function Projects() {
         프로젝트
       </h2>
 
-      {/* list scope: hover 시 흐림/강조 */}
       <ul className="interactive-list space-y-12">
-        {PROJECTS.map((p) => (
-          <li
-            key={p.title}
-            className="interactive-list-item group md:grid md:grid-cols-8 md:gap-10 cursor-pointer"
-          >
-            {p.href ? (
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${p.title} 프로젝트 열기`}
-                className="absolute inset-0 z-10"
-              />
-            ) : null}
+        {PROJECTS.map((p) => {
+          const isLink = Boolean(p.href)
 
-            {/* background layer (hover 시 등장) */}
-            <div aria-hidden className="interactive-list-item-bg" />
-
-            {/* content layer */}
-            <div className="relative z-10 md:col-span-2">
-              <img
-                src={p.imageSrc}
-                alt={p.imageAlt}
-                loading="lazy"
-                className="h-auto w-full border border-border"
-              />
-            </div>
-
-            <article className="relative z-10 mt-4 md:col-span-6 md:mt-0">
-              {/* title + external link */}
-              <div className="flex items-center gap-1">
-                <h3 className="text-lg font-semibold text-text group-hover:text-primary">
-                  {p.title}
-                </h3>
-
-                <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
-              </div>
-
-              {/* description */}
-              <p className="mt-3 text-base/7 font-light text-muted">
-                {p.description}
-              </p>
-
-              {/* award */}
-              {p.award ? (
-                <p className="mt-3 text-sm text-text">
-                  <span className="mr-1" aria-hidden>
-                    🏅
-                  </span>
-                  <span className="font-medium text-primary">{p.award}</span>
-                </p>
+          return (
+            <li
+              key={p.title}
+              className="interactive-list-item group relative md:grid md:grid-cols-8 md:gap-10"
+            >
+              {/* 카드 전체 클릭 오버레이 */}
+              {isLink ? (
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${p.title} 프로젝트 열기`}
+                  className="absolute inset-0 z-20"
+                />
               ) : null}
 
-              {/* tags */}
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <li key={t}>
-                    <Tag>{t}</Tag>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </li>
-        ))}
+              {/* background layer (hover 시 등장) */}
+              <div
+                aria-hidden
+                className="interactive-list-item-bg pointer-events-none"
+              />
+
+              {/* content layer: 오버레이가 클릭을 가져가도록 pointer-events 끔 */}
+              <div className="relative z-10 pointer-events-none md:col-span-2">
+                <img
+                  src={p.imageSrc}
+                  alt={p.imageAlt}
+                  loading="lazy"
+                  className="h-auto w-full border border-border"
+                />
+              </div>
+
+              <article className="relative z-10 mt-4 pointer-events-none md:col-span-6 md:mt-0">
+                {/* title + external link */}
+                <div className="flex items-center gap-1">
+                  <h3 className="text-lg font-semibold text-text group-hover:text-primary">
+                    {p.title}
+                  </h3>
+
+                  {isLink ? (
+                    <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
+                  ) : null}
+                </div>
+
+                {/* description */}
+                <p className="mt-3 text-base/7 font-light text-muted">
+                  {p.description}
+                </p>
+
+                {/* award */}
+                {p.award ? (
+                  <p className="mt-3 text-sm text-text">
+                    <span className="mr-1" aria-hidden>
+                      🏅
+                    </span>
+                    <span className="font-medium text-primary">{p.award}</span>
+                  </p>
+                ) : null}
+
+                {/* tags */}
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <li key={t}>
+                      <Tag>{t}</Tag>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </li>
+          )
+        })}
       </ul>
     </section>
   )
