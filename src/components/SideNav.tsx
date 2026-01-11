@@ -75,15 +75,6 @@ export default function SideNav({ sections, activeId, onNavigate }: Props) {
         </a>
         <a
           className="group inline-flex items-center gap-1 text-sm text-muted hover:text-text"
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-        >
-          resume
-          <ExternalLinkIcon className="h-4 w-4 translate-y-px transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </a>
-        <a
-          className="group inline-flex items-center gap-1 text-sm text-muted hover:text-text"
           href="mailto:irene.k2547@gmail.com"
         >
           email
